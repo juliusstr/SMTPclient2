@@ -46,13 +46,15 @@ public class SenderMail {
             besked.setFrom(new InternetAddress(from));
             besked.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             besked.setSubject(subjekt);
-            besked.setText(text);
 
             MimeBodyPart messageBodyPart = new MimeBodyPart();
             DataSource source = new FileDataSource(filepath);
             messageBodyPart.setDataHandler(new DataHandler(source));
             messageBodyPart.setFileName(filepath);
             MimeMultipart multipart = new MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+            messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(text);
             multipart.addBodyPart(messageBodyPart);
 
             besked.setContent(multipart);

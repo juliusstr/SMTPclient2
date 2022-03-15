@@ -13,7 +13,7 @@ public class MailClient {
 
     public boolean sendMail(String mailTo, String nameTo, String subject, String content, String filename){
         try {
-            Socket socket = new Socket("smtp2.bhsi.xyz", 2525);
+            Socket socket = new Socket("dist.bhsi.xyz", 2525);
 
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(socket.getInputStream()));
